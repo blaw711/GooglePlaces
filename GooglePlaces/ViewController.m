@@ -53,16 +53,17 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
+- (IBAction)recenterButtonPressed:(id)sender {
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(locationManager.location.coordinate,1000,1000);
+
+    [self.mapView setRegion:region animated:YES];
+}
 
 - (IBAction)barButtonItemPressed:(id)sender {
     UIBarButtonItem *button = (UIBarButtonItem *)sender;
     NSString *place = [button.title lowercaseString];
     
-    if ([place isEqualToString:@"all"]) {
-        [self queryAllGooglePlaces];
-    } else{
-        [self queryGooglePlaces:place];
-    }
+    [self queryGooglePlaces:place];
 }
 
 - (IBAction)segmentedControl:(id)sender {
@@ -76,24 +77,17 @@
     }
     
 }
--(void) queryAllGooglePlaces{
-    // Build the url string to send to Google. NOTE: The kGOOGLE_API_KEY is a constant that should contain your own API key that you obtain from Google. See this link for more info:
-    // https://developers.google.com/maps/documentation/places/#Authentication
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&sensor=true&key=%@", currentCentre.latitude, currentCentre.longitude, [NSString stringWithFormat:@"%i", currenDist], kGOOGLE_API_KEY];
-    
-    //Formulate the string as a URL object.
-    NSURL *googleRequestURL=[NSURL URLWithString:url];
-    
-    // Retrieve the results of the URL.
-    dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL: googleRequestURL];
-        [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
-    });
-}
 -(void) queryGooglePlaces: (NSString *) googleType {
     // Build the url string to send to Google. NOTE: The kGOOGLE_API_KEY is a constant that should contain your own API key that you obtain from Google. See this link for more info:
     // https://developers.google.com/maps/documentation/places/#Authentication
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", currentCentre.latitude, currentCentre.longitude, [NSString stringWithFormat:@"%i", currenDist], googleType, kGOOGLE_API_KEY];
+    NSString *url;
+    if ([googleType isEqualToString:@"all"]) {
+        
+        url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&sensor=true&key=%@", currentCentre.latitude, currentCentre.longitude, [NSString stringWithFormat:@"%i", currenDist], kGOOGLE_API_KEY];
+    } else{
+        
+        url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", currentCentre.latitude, currentCentre.longitude, [NSString stringWithFormat:@"%i", currenDist], googleType, kGOOGLE_API_KEY];
+    }
     
     //Formulate the string as a URL object.
     NSURL *googleRequestURL=[NSURL URLWithString:url];
@@ -182,9 +176,12 @@
     pointCoord.latitude = [[location objectForKey:@"lat"] doubleValue];
     pointCoord.longitude = [[location objectForKey:@"lng"] doubleValue];
     
+    dispatch_async(kBgQueue, ^{
+        [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]]];
+        
+    });
     
-    
-    [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]]];
+   /* [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]]];*/
     
     
     

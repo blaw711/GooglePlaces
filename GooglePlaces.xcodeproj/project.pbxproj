@@ -23,6 +23,7 @@
 		5A38886718DD3D7B008B1EAE /* GooglePlacesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A38886618DD3D7B008B1EAE /* GooglePlacesTests.m */; };
 		5A38887118DD3F1C008B1EAE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A38887018DD3F1C008B1EAE /* MapKit.framework */; };
 		5A38887318DD3F25008B1EAE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A38887218DD3F25008B1EAE /* CoreLocation.framework */; };
+		5A38887518DE717E008B1EAE /* rezoom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A38887418DE717E008B1EAE /* rezoom@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5A38886618DD3D7B008B1EAE /* GooglePlacesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GooglePlacesTests.m; sourceTree = "<group>"; };
 		5A38887018DD3F1C008B1EAE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5A38887218DD3F25008B1EAE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5A38887418DE717E008B1EAE /* rezoom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rezoom@2x.png"; path = "../Fit Track/rezoom@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				5A38886018DD3D7B008B1EAE /* GooglePlacesTests */,
 				5A38883A18DD3D7B008B1EAE /* Frameworks */,
 				5A38883918DD3D7B008B1EAE /* Products */,
+				5A38887618DE718C008B1EAE /* Images */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +161,14 @@
 				5A38886318DD3D7B008B1EAE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A38887618DE718C008B1EAE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5A38887418DE717E008B1EAE /* rezoom@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +249,7 @@
 			files = (
 				5A38885418DD3D7B008B1EAE /* Images.xcassets in Resources */,
 				5A38884618DD3D7B008B1EAE /* InfoPlist.strings in Resources */,
+				5A38887518DE717E008B1EAE /* rezoom@2x.png in Resources */,
 				5A38884F18DD3D7B008B1EAE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
