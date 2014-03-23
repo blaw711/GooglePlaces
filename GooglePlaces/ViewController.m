@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailLocationViewController.h"
 
 @interface ViewController (){
     CLLocationManager *locationManager;
@@ -54,6 +55,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+
+}
+
+
 - (IBAction)recenterButtonPressed:(id)sender {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(locationManager.location.coordinate,1000,1000);
 
@@ -110,6 +118,7 @@
     
     //The results from Google will be an array obtained from the NSDictionary object with the key "results".
     NSArray* places = [json objectForKey:@"results"];
+    //NSLog(@"Google Data: %@", places);
     
     self.locationsArray = places;
     [self.tableView reloadData];
@@ -205,6 +214,15 @@
     cell.detailTextLabel.text = address;
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     return cell;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"location" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    DetailLocationViewController *detailView = segue.destinationViewController;
+    detailView.place = [self.locationsArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
 }
 
 

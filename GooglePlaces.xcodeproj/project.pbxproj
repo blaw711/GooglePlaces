@@ -35,6 +35,7 @@
 		5A38889318DE75ED008B1EAE /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A38888A18DE75ED008B1EAE /* AFURLSessionManager.m */; };
 		5A38889518DE7647008B1EAE /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A38889418DE7647008B1EAE /* placeholder.png */; };
 		5A38889818DE76B9008B1EAE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A38889718DE76B9008B1EAE /* UIImageView+AFNetworking.m */; };
+		5A38889B18DE7B4F008B1EAE /* DetailLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A38889A18DE7B4F008B1EAE /* DetailLocationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		5A38889418DE7647008B1EAE /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5A38889618DE76B9008B1EAE /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		5A38889718DE76B9008B1EAE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		5A38889918DE7B4F008B1EAE /* DetailLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLocationViewController.h; sourceTree = "<group>"; };
+		5A38889A18DE7B4F008B1EAE /* DetailLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLocationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 				5A38884D18DD3D7B008B1EAE /* Main.storyboard */,
 				5A38885018DD3D7B008B1EAE /* ViewController.h */,
 				5A38885118DD3D7B008B1EAE /* ViewController.m */,
+				5A38889918DE7B4F008B1EAE /* DetailLocationViewController.h */,
+				5A38889A18DE7B4F008B1EAE /* DetailLocationViewController.m */,
 				5A38885318DD3D7B008B1EAE /* Images.xcassets */,
 				5A38884218DD3D7B008B1EAE /* Supporting Files */,
 			);
@@ -345,6 +350,7 @@
 				5A38889118DE75ED008B1EAE /* AFURLRequestSerialization.m in Sources */,
 				5A38889318DE75ED008B1EAE /* AFURLSessionManager.m in Sources */,
 				5A38884C18DD3D7B008B1EAE /* AppDelegate.m in Sources */,
+				5A38889B18DE7B4F008B1EAE /* DetailLocationViewController.m in Sources */,
 				5A38884818DD3D7B008B1EAE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
