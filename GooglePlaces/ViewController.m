@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ViewController (){
     CLLocationManager *locationManager;
@@ -176,10 +177,24 @@
     pointCoord.latitude = [[location objectForKey:@"lat"] doubleValue];
     pointCoord.longitude = [[location objectForKey:@"lng"] doubleValue];
     
-    dispatch_async(kBgQueue, ^{
-        [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]]];
+  //  dispatch_async(kBgQueue, ^{
+       // [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]]];
         
-    });
+  //  });
+    NSURL *url = [NSURL URLWithString:imageURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+    
+    __weak UITableViewCell *weakCell = cell;
+    
+    [cell.imageView setImageWithURLRequest:request
+                          placeholderImage:placeholderImage
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                       
+                                       weakCell.imageView.image = image;
+                                       [weakCell setNeedsLayout];
+                                       
+                                   } failure:nil];
     
    /* [cell.imageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]]];*/
     
